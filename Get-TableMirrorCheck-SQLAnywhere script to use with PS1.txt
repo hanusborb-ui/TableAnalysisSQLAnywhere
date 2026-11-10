@@ -1,0 +1,63 @@
+﻿.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7118:40901' `
+    -DatabaseName 'DB_CHR' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7119:40902' `
+    -DatabaseName 'DB_FH' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7120:40904' `
+    -DatabaseName 'DB_HRHA' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7121:41003' `
+    -DatabaseName 'DB_KT' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7122:40907' `
+    -DatabaseName 'DB_KY' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7123:40905' `
+    -DatabaseName 'DB_MCR' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7124:41002' `
+    -DatabaseName 'DB_PA' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7125:40903' `
+    -DatabaseName 'DB_PN' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7126:40906' `
+    -DatabaseName 'DB_SCHR' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+.\Get-TableMirrorCheck-SQLAnywhere17.ps1 `
+    -ServerName 'prov-s-7127:40900' `
+    -DatabaseName 'DB_SHR' `
+    -IntegratedSecurity `
+    -OutputDirectory 'C:\Temp\TableChecks'
+
+

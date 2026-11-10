@@ -1,0 +1,50 @@
+$targets = @(
+    @{ Engine = 'chr_r1q';  Database = 'db_chr';  Endpoint = 'prov-ct-7024.health.hin.sk.ca:40901' }
+
+    @{ Engine = 'fh_r1q';   Database = 'db_fh';   Endpoint = 'prov-ct-7024.health.hin.sk.ca:40902' }
+    @{ Engine = 'fh_efd';   Database = 'db_fh';   Endpoint = 'prov-ct-7054.health.hin.sk.ca:40902' }
+
+    @{ Engine = 'hrha_r1q'; Database = 'db_hrha'; Endpoint = 'prov-ct-7024.health.hin.sk.ca:40904' }
+    @{ Engine = 'hrha_efd'; Database = 'db_hrha'; Endpoint = 'prov-ct-7054.health.hin.sk.ca:40904' }
+
+    @{ Engine = 'kt_r1q';   Database = 'db_kt';   Endpoint = 'prov-ct-7024.health.hin.sk.ca:41003' }
+    @{ Engine = 'kt_efd';   Database = 'db_kt';   Endpoint = 'prov-ct-7054.health.hin.sk.ca:41003' }
+
+    @{ Engine = 'ky_r1q';   Database = 'db_ky';   Endpoint = 'prov-ct-7024.health.hin.sk.ca:40907' }
+    @{ Engine = 'ky_efd';   Database = 'db_ky';   Endpoint = 'prov-ct-7054.health.hin.sk.ca:40907' }
+
+    @{ Engine = 'mcr_r1q';  Database = 'db_mcr';  Endpoint = 'prov-ct-7024.health.hin.sk.ca:40905' }
+    @{ Engine = 'mcr_efd';  Database = 'db_mcr';  Endpoint = 'prov-ct-7054.health.hin.sk.ca:40905' }
+
+    @{ Engine = 'pa_r1q';   Database = 'db_pa';   Endpoint = 'prov-ct-7024.health.hin.sk.ca:41002' }
+    @{ Engine = 'pa_efd';   Database = 'db_pa';   Endpoint = 'prov-ct-7054.health.hin.sk.ca:41002' }
+
+    @{ Engine = 'pn_r1q';   Database = 'db_pn';   Endpoint = 'prov-ct-7024.health.hin.sk.ca:40903' }
+    @{ Engine = 'pn_efd';   Database = 'db_pn';   Endpoint = 'prov-ct-7054.health.hin.sk.ca:40903' }
+
+    @{ Engine = 'schr_r1q'; Database = 'db_schr'; Endpoint = 'prov-ct-7024.health.hin.sk.ca:40906' }
+    @{ Engine = 'schr_efd'; Database = 'db_schr'; Endpoint = 'prov-ct-7054.health.hin.sk.ca:40906' }
+
+    @{ Engine = 'shr_r1q';  Database = 'db_shr';  Endpoint = 'prov-ct-7024.health.hin.sk.ca:40900' }
+    @{ Engine = 'shr_efd';  Database = 'db_shr';  Endpoint = 'prov-ct-7054.health.hin.sk.ca:40900' }
+)
+
+foreach ($target in $targets) {
+    Write-Host "`nChecking $($target.Engine) / $($target.Database) on $($target.Endpoint)" `
+        -ForegroundColor Cyan
+
+    $parameters = @{
+    ServerName         = $target.Endpoint
+    EngineName         = $target.Engine
+    DatabaseName       = $target.Database
+    IntegratedSecurity = $true
+    CsvPath            = "C:\Temp\TableChecks\$($target.Endpoint -replace ':', '_') - $($target.Engine) - $($target.Database).csv"
+}
+
+    try {
+        .\Get-TableMirrorCheck-SQLAnywhere17.ps1 @parameters
+    }
+    catch {
+        Write-Warning "Failed $($target.Engine): $($_.Exception.Message)"
+    }
+}
